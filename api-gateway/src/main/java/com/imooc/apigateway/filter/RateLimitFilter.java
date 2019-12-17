@@ -16,6 +16,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 @Component
 public class RateLimitFilter extends ZuulFilter{
 
+// 	rate limit component. define it to be 100 e.g 100 tokens per second
 	private static final RateLimiter RATE_LIMITER = RateLimiter.create(100);
 
 	/**
@@ -39,6 +40,7 @@ public class RateLimitFilter extends ZuulFilter{
 	 */
 	@Override
 	public int filterOrder() {
+// 		add rate limit ahead to the very first order
 		return SERVLET_DETECTION_FILTER_ORDER - 1;
 	}
 
@@ -59,6 +61,7 @@ public class RateLimitFilter extends ZuulFilter{
 	 */
 	@Override
 	public Object run() {
+// 		if token has NOT been acquired
 		if (!RATE_LIMITER.tryAcquire()) {
 			throw new RateLimitException();
 		}
