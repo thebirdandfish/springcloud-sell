@@ -1,0 +1,17 @@
+eureka:
+  client:
+    service-url:
+#      把自己也注册成eureka client
+#      当然可以指定多个，把这个server做为client注册到其他多个eureka server上。
+      defaultZone: http://eureka2:8762/eureka/
+      #    因为本身就是注册中心，不需要把这个作为client的名字显示在client里面
+  #    register-with-eureka: false
+  server:
+#    改为false，可以让自我保护机制失效。让频繁上下线的应用下线。但是生产环境不能关，改为true
+    enable-self-preservation: false
+spring:
+  application:
+#    把默认的unknown名字改掉
+    name: eureka
+server:
+  port: 8761

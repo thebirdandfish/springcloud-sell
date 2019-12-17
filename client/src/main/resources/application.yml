@@ -1,0 +1,13 @@
+eureka:
+  client:
+    service-url:
+#      把这个client注册到哪个eureka server上
+#      注册多个eureka，其中一个挂了，仍然可以用其他的
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/
+#      这个可以把显示的ip地址改为域名。自定义链接。
+#  instance:
+#    hostname: clientName
+spring:
+  application:
+#    把unknown的名字改为client ， 可以随便起名字
+    name: client
