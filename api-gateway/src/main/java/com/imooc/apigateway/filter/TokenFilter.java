@@ -19,11 +19,13 @@
 //public class TokenFilter extends ZuulFilter {
 //    @Override
 //    public String filterType() {
+//        // 做参数校验，应该在之前
 //        return PRE_TYPE;
 //    }
 //
 //    @Override
 //    public int filterOrder() {
+//        // 放在这个之前 -1就可以
 //        return PRE_DECORATION_FILTER_ORDER - 1;
 //    }
 //
@@ -34,11 +36,13 @@
 //
 //    @Override
 //    public Object run() {
+//        // 获取上下文
 //        RequestContext requestContext = RequestContext.getCurrentContext();
 //        HttpServletRequest request = requestContext.getRequest();
 //
 //        //这里从url参数里获取, 也可以从cookie, header里获取
 //        String token = request.getParameter("token");
+//        // 如果是空，返回没有权限401
 //        if (StringUtils.isEmpty(token)) {
 //            requestContext.setSendZuulResponse(false);
 //            requestContext.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
